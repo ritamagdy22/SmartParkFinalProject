@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:smartpark/RegisterScreen/ParkingPlaces.dart';
-import 'package:smartpark/widget/Custom_Button.dart';
+import 'package:smart_parking_final/widget/Custom_Button.dart';
+
+import 'BookAndPay.dart';
 
 class WelcomeScreen extends StatelessWidget {
-  static const RouteName = "WelcomeScreen";
+
+
+  const WelcomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +27,32 @@ class WelcomeScreen extends StatelessWidget {
           ),
           Expanded(
               flex: 2, child: Image.asset('assets/images/smartwelcome.png')),
-          SizedBox(height: 10),
-          Text(
+          const SizedBox(height: 10),
+          const Text(
             "The best parking applicantion for you",
             style: TextStyle(
                 color: Colors.black,
                 decoration: TextDecoration.none,
                 fontSize: 15),
           ),
-          Spacer(),
-          CustomButton(
-            title: "Next",
-            onPressed: () {
-              Navigator.of(context).pushNamed(ParkingPlaces.RouteName);
-            },
+          const Spacer(),
+          Padding(
+            padding: const EdgeInsets.all(20),
+            child: CustomButton(
+              title: "Next",
+              onPressed: () {
+                Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                      pageBuilder: (_, __, ___) => const BookAndPay(),
+                      transitionDuration: const Duration(milliseconds: 500),
+                      transitionsBuilder: (_, a, __, c) =>
+                          FadeTransition(opacity: a, child: c),
+                    ),
+                );
+                // Navigator.of(context).pushNamed(BookAndPay.RouteName);
+              },
+            ),
           )
         ],
       ),
@@ -45,19 +60,4 @@ class WelcomeScreen extends StatelessWidget {
   }
 }
 
-/*
-ElevatedButton(onPressed: (){
-            Navigator.of(context).pushNamed(ParkingPlaces.RouteName);
 
-          },
-              style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.black),
-            minimumSize: MaterialStateProperty.all(Size(370, 50)),
-
-          ),
-              child: Text("Next",
-                style: TextStyle(color: Colors.white,
-                fontSize: 25
-                ),
-              ))
- */

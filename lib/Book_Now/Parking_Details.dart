@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smartpark/widget/Custom_Button.dart';
+import 'package:smart_parking_final/widget/Custom_Button.dart';
 import 'package:table_calendar/table_calendar.dart';
-import 'package:timer_count_down/timer_count_down.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:timer_count_down/timer_count_down.dart';
-import 'package:time/time.dart';
+import 'package:intl/intl.dart';
+
 import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 class ParkingDetails extends StatefulWidget {
 
@@ -28,9 +26,9 @@ class _ParkingDetailsState extends State<ParkingDetails> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: const IconThemeData(color: Colors.black),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -38,7 +36,7 @@ class _ParkingDetailsState extends State<ParkingDetails> {
       ),
       body: Column(
         children: [
-          Text(
+          const Text(
             "Select Date",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
           ),
@@ -73,8 +71,8 @@ class _ParkingDetailsState extends State<ParkingDetails> {
           ),
 
 
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+           Padding(
+            padding: EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -101,25 +99,16 @@ class _ParkingDetailsState extends State<ParkingDetails> {
 
 
 
-              SingleChildScrollView(
-                child: TextButton(
-                    onPressed: () {
-                      DatePicker.showDatePicker(context,
-                          showTitleActions: true,
-                          minTime: DateTime(2023, 3, 5),
-                          maxTime: DateTime(2024, 6, 7), onChanged: (date) {
-                            print('change $date');
-                          }, onConfirm: (date) {
-                            print('confirm $date');
-                          }, currentTime: DateTime.now(), locale: LocaleType.en);
-                    },
-                    child: Text(
-                      'show date time picker',
-                      style: TextStyle(color: Colors.blue),
-                    )),
-              ),
+              // SingleChildScrollView(
+              //   child:
+              // ),
+              Text(
+                'at:${DateFormat('h:mm a').format(DateFormat("yyyy-MM-dd hh:mm:ss").parse(DateTime.now().toString()))}',
+                style: TextStyle(color: Colors.blue),
+              ) ,
 
-              SizedBox(height: 30),
+
+              const SizedBox(height: 30),
 
              CustomButton(title: "Pay Now",
              onPressed: (){},

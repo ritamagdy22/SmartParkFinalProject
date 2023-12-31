@@ -1,102 +1,150 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smartpark/RegisterScreen/ExtendParking.dart';
-import 'package:smartpark/widget/Custom_Button.dart';
-
+import 'package:smart_parking_final/widget/Custom_Button.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import '../UI/LoginScreen.dart';
 
-class BookAndPay extends StatelessWidget {
+class BookAndPay extends StatefulWidget {
+  const BookAndPay({super.key});
 
-  static const RouteName ="BookAndPay";
+  @override
+  State<BookAndPay> createState() => _BookAndPayState();
+}
+
+class _BookAndPayState extends State<BookAndPay> {
+  late PageController controller =
+      PageController(viewportFraction: 0.8, keepPage: true);
+
+  int currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
-     MediaQuery.of(context).size;
-     return Scaffold(
+    MediaQuery.of(context).size;
+    return Scaffold(
       body: Center(
-        child: Stack(
-          children: [
-            Center(
-              child: Container(
-                margin: const EdgeInsets.symmetric(horizontal: 12),
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: Colors.white,
-                child: Center(
-                  child: Column(
-                    children: [
-                      Padding(padding: EdgeInsets.all(70)),
-                      Expanded
-                        (
-                          flex: 8,
-                          child: Image.asset('assets/images/BookAndPay.png')),
-                      SizedBox(height: 70,),
-                      Expanded(
-                          flex: 2
-                          ,child: Image.asset("assets/images/PayText.png")),
-                    ],
+        child: Center(
+          child: Center(
+            child: Column(
+              children: [
+                Padding(
+                    padding: EdgeInsets.only(
+                        top: MediaQuery.of(context).padding.top)),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            ));
+                      },
+                      child: Text(
+                        "Skip",
+                        style: TextStyle(
+                          color: Colors.red,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const Padding(padding: EdgeInsets.all(70)),
+                Expanded(
+                  child: PageView.builder(
+                    controller: controller,
+                    itemCount: pages.length,
+                    itemBuilder: (context, index) {
+                      return pages[index];
+                    },
                   ),
                 ),
-              ),
-            ),
-            Positioned(
-              top: 60,
-              right: 0,
-              child: TextButton(
-                onPressed: () {
+                SmoothPageIndicator(
+                  controller: controller,
+                  count: 3,
 
-                  Navigator.of(context).pushNamed(LoginScreen.RouteName);
-                  // Handle the action when the "Skip" button is pressed.
-                },
-                child: Text(
-                  "Skip",
-                  style: TextStyle(
-                    color: Colors.red,
-                    fontSize: 18,
+                  effect: WormEffect(
+                    activeDotColor: Colors.red,
+                    dotColor: Colors.red.withOpacity(0.4),
                   ),
+
                 ),
-              ),
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: CustomButton(
+                      title: "Next",
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => LoginScreen(),
+                            )
+                        );
+                      }
+                      ),
+                )
+              ],
             ),
-            Positioned(
-              bottom: 20,
-              right: 20,
-              child: CustomButton(title: "Next",onPressed:
-
-                  () {
-                Navigator.of(context).pushNamed(ExtendParking.RouteName);
-
-
-
-              },
-
-
-              )
-            ),
-          ],
+          ),
         ),
       ),
     );
-
   }
 }
-/*
-ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(ExtendParking.RouteName);
 
-
-
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.black),
-                  minimumSize: MaterialStateProperty.all(Size(370, 50)),
-                ),
-                child: Text(
-                  "Next",
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25,
-                  ),
-                ),
-              ),
- */
+List pages = [
+  Column(children: [
+    Expanded(
+      flex: 5,
+      child: Image.asset('assets/images/BookAndPay.png'),
+    ),
+    const SizedBox(
+      height: 70,
+    ),
+    Expanded(
+        flex: 5,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 45.0),
+          child:
+              Image.asset("assets/images/PayText.png", fit: BoxFit.scaleDown),
+        )),
+  ]),
+  Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      Expanded(
+          flex: 5,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 45.0),
+            child: Image.asset('assets/images/ExtendParking.png'),
+          )),
+         const SizedBox(
+        height: 70,
+      ),
+      Expanded(
+          flex: 3,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 45.0),
+            child: Image.asset(
+              "assets/images/TextExtendParkingTime.png",
+              fit: BoxFit.scaleDown,
+            ),
+          )),
+    ],
+  ),
+  Column(
+    children: [
+      Expanded(flex: 7, child: Image.asset('assets/images/parking2.png')),
+      const SizedBox(
+        height: 70,
+      ),
+      Expanded(
+          flex: 3,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 45.0),
+            child: Image.asset("assets/images/FindParkingPlaces.png",
+                fit: BoxFit.scaleDown),
+          )),
+    ],
+  ),
+];
