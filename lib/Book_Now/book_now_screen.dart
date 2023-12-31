@@ -9,10 +9,14 @@ class BookNowScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     return Column(
+
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+
         const SizedBox(
           height: 70,
           width: 70,

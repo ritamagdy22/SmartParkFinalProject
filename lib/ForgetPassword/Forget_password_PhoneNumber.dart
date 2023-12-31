@@ -1,42 +1,147 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Classes/Otp.dart';
-import 'Classes/ResendCode.dart';
-import 'Classes/TopTexts.dart';
+import 'package:flutter/services.dart';
+
+import '../widget/AppBarDetails.dart';
 
 
 
 class ForgetPasswordByPhoneNumber extends StatelessWidget {
+  const ForgetPasswordByPhoneNumber({super.key});
 
-  static const routename="ForgetPasswordByPhoneNumber";
+
 
   @override
   Widget build(BuildContext context) {
-    var size = MediaQuery.of(context).size;
+
     return SafeArea(
         child: Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            leading: const Icon(
-              CupertinoIcons.back,
-              color: Colors.deepPurpleAccent,
-              size: 30,
-            ),
-          ),
-          body: Container(
+          appBar: appBarWidget(context: context),
+          body:SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0,horizontal: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Verification code", style: TextStyle(fontSize: 30,color: Colors.black,)),
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  const Text("We have sent the verification code to",
+                      style: TextStyle(fontSize: 20,color: Colors.black,)),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  RichText(
+                    text: const TextSpan(
+                        text: "+98********56  ",
+                        style:  TextStyle(fontSize: 20,color: Colors.black,),
+                        children: [
+                          TextSpan(
+                              text: "Change Phone number?", style:  TextStyle(fontSize: 20,color: Colors.red,))
+                        ]),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      SizedBox(
+                        width: 65,
+                        height: 65,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                          },
+                          decoration: textFormFieldDecoration,
+                          cursorColor: Colors.black87,
+                          textAlign: TextAlign.center,
+                          cursorHeight: 30.0,
+                          maxLines: 1,
 
-            margin: const EdgeInsets.symmetric(horizontal: 12),
-            width: size.width,
-            height: size.height,
-            child: Column(
-              children: [
-                const TopTexts(),
-                Otp(),
-                const ResendCode(),
-                Expanded(child: Container()),
-               // BottomButton(size: size)
-              ],
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(1),
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 65,
+                        height: 65,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                          },
+                          decoration: textFormFieldDecoration,
+                          cursorColor: Colors.black87,
+                          textAlign: TextAlign.center,
+                          cursorHeight: 30.0,
+                          maxLines: 1,
+
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(1),
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 65,
+                        height: 65,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusScope.of(context).nextFocus();
+                            }
+                          },
+                          decoration: textFormFieldDecoration,
+                          cursorColor: Colors.black87,
+                          textAlign: TextAlign.center,
+                          cursorHeight: 30.0,
+                          maxLines: 1,
+
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(1),
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: 65,
+                        height: 65,
+                        child: TextFormField(
+                          onChanged: (value) {
+                            if (value.length == 1) {
+                              FocusManager.instance.primaryFocus?.unfocus();
+                            }
+                          },
+                          decoration: textFormFieldDecoration,
+                          cursorColor: Colors.black87,
+                          textAlign: TextAlign.center,
+                          cursorHeight: 30.0,
+                          maxLines: 1,
+
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            LengthLimitingTextInputFormatter(1),
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+
+
+
+                ],
+              ),
             ),
           ),
         ));
@@ -44,3 +149,20 @@ class ForgetPasswordByPhoneNumber extends StatelessWidget {
 }
 
 
+InputDecoration textFormFieldDecoration = InputDecoration(
+  hintText: "0",
+  enabledBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(10),
+    borderSide: const BorderSide(
+      width: 2,
+      color: Colors.black87,
+    ),
+  ),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.circular(15),
+    borderSide: const BorderSide(
+      width: 3,
+      color: Colors.black87,
+    ),
+  ),
+);

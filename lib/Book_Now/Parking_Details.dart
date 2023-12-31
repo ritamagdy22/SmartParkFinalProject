@@ -3,6 +3,8 @@ import 'package:smart_parking_final/widget/Custom_Button.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 
+import '../widget/BoottomNavigationBar.dart';
+
 class ParkingDetails extends StatefulWidget {
   static const routename = "ParkingDetails";
 
@@ -20,6 +22,9 @@ class _ParkingDetailsState extends State<ParkingDetails> {
 
   @override
   Widget build(BuildContext context) {
+    MediaQuery.of(context).size;
+
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
@@ -33,7 +38,9 @@ class _ParkingDetailsState extends State<ParkingDetails> {
         ),
       ),
       body: Column(
+
         children: [
+
           const Text(
             "Select Date",
             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
@@ -113,7 +120,7 @@ class _ParkingDetailsState extends State<ParkingDetails> {
                   children: [
                     Text(
                       'at:${DateFormat('h:mm a').format(DateFormat("yyyy-MM-dd hh:mm:ss").parse(DateTime.now().toString()))}',
-                      style: const TextStyle(color: Colors.blue, fontSize: 18),
+                      style: const TextStyle(color: Colors.indigo, fontSize: 18),
                     ),
                   ],
                 ),
@@ -123,7 +130,10 @@ class _ParkingDetailsState extends State<ParkingDetails> {
                 CustomButton(
                   title: "Pay Now",
                   onPressed: () {},
-                )
+                ),
+
+               // BottomNavigationBarDetails()
+
               ],
             ),
           ),

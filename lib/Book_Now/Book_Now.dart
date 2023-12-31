@@ -79,9 +79,9 @@ class _BookNowState extends State<BookNow> {
               },
               child: const Column(
                 children: [
-                  Icon(Icons.airplane_ticket),
+                  Icon(Icons.search),
                   Text(
-                    "Ticket",
+                    "Search",
                   )
                 ],
               ),
@@ -109,9 +109,9 @@ class _BookNowState extends State<BookNow> {
               },
               child: const Column(
                 children: [
-                  Icon(Icons.search),
+                  Icon(Icons.airplane_ticket),
                   Text(
-                    "History",
+                    "Ticket",
                   )
                 ],
               ),

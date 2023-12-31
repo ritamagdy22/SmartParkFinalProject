@@ -45,8 +45,11 @@ class ForgetPAssword extends StatelessWidget {
                     horizontal: 20), // Adjust horizontal padding as needed
                 child: ElevatedButton(
                   onPressed: () {
-                    Navigator.of(context)
-                        .pushNamed(ForgetPasswordByPhoneNumber.routename);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => ForgetPasswordByPhoneNumber(),
+                        ));
                   },
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(Colors.white60),

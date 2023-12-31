@@ -35,12 +35,15 @@ class _ParkingHistoryState extends State<ParkingHistory> {
                   width: 80,
                   height: 45,
                   decoration: const BoxDecoration(
-                    color: Colors.blue,
+                    color: Colors.grey,
+                      borderRadius: BorderRadius.all(Radius.circular(15))
+
+
                   ),
                   child: const Center(
                     child: Text(
-                      'Item ',
-                      style: TextStyle(color: Colors.white),
+                      'completed ',
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
@@ -56,12 +59,14 @@ class _ParkingHistoryState extends State<ParkingHistory> {
                   width: 80,
                   height: 45,
                   decoration: const BoxDecoration(
-                    color: Colors.green,
+                    color: Colors.grey,
+                      borderRadius: BorderRadius.all(Radius.circular(15))
+
                   ),
                   child: const Center(
                     child: Text(
-                      'Item2 ',
-                      style: TextStyle(color: Colors.white),
+                      'Ongoing ',
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
@@ -77,12 +82,14 @@ class _ParkingHistoryState extends State<ParkingHistory> {
                   width: 80,
                   height: 45,
                   decoration: const BoxDecoration(
-                    color: Colors.red,
+                    color: Colors.grey,
+                    borderRadius: BorderRadius.all(Radius.circular(15))
+                    
                   ),
                   child: const Center(
                     child: Text(
-                      'Item2 ',
-                      style: TextStyle(color: Colors.white),
+                      'Canceled ',
+                      style: TextStyle(color: Colors.black),
                     ),
                   ),
                 ),
@@ -118,3 +125,8 @@ List dataList=[
   ),
 
 ];
+
+
+    
+
+
