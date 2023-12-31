@@ -133,9 +133,7 @@ class ForgetPAssword extends StatelessWidget {
                   ),
                 ),
               ),
-              const Spacer(
-                flex: 10,
-              ),
+             SizedBox(height: 20,),
               Padding(
                   padding: EdgeInsets.only(left: 20, right: 220),
                   // Adjust the left padding as needed
@@ -155,30 +153,4 @@ class ForgetPAssword extends StatelessWidget {
     );
   }
 }
-/*
-ElevatedButton(
-                    onPressed: () {
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(Colors.black87),
-                      minimumSize: MaterialStateProperty.all(Size(70,70)),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20.0), // Adjust the value as needed
-                        ),
-                      ),
 
-
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-
-                      children: [
-                        Text("Continue",style: TextStyle(
-                          fontSize: 20
-                        ),
-                        ),
-                      ],
-                    ),
-                  ),
- */

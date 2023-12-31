@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smart_parking_final/Book_Now/Book_Now.dart';
+import 'package:smart_parking_final/UI/ForgetPassword.dart';
 import 'package:smart_parking_final/widget/Custom_Button.dart';
 import '../ForgetPassword/Forget_password_PhoneNumber.dart';
 import '../widget/Form_Label_Widget.dart';
 import '../widget/custom_Text_FormField.dart';
 import 'Fill_Your_Information.dart';
-import 'ForgetPassword.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -133,7 +133,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => ForgetPasswordByPhoneNumber(),
+                            builder: (context) => ForgetPAssword(),
                           ));
                     },
                     child: const Text("Forget Password ?"),
@@ -164,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     // need google sign in image not text
                     ElevatedButton(
                       onPressed: _handleGoogleSignIn,
-                      child: const Text('Google'),
+                      child:Image.asset('assets/images/GoogleLoogle.png'),
                     ),
 
                     const SizedBox(width: 10),
