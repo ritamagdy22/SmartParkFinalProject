@@ -3,9 +3,7 @@ import 'package:smart_parking_final/widget/Custom_Button.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:intl/intl.dart';
 
-import 'package:flutter_datetime_picker_plus/flutter_datetime_picker_plus.dart';
 class ParkingDetails extends StatefulWidget {
-
   static const routename = "ParkingDetails";
 
   @override
@@ -69,9 +67,7 @@ class _ParkingDetailsState extends State<ParkingDetails> {
             },
             // events: _events, // Pass your events map here
           ),
-
-
-           Padding(
+          const Padding(
             padding: EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -97,32 +93,22 @@ class _ParkingDetailsState extends State<ParkingDetails> {
                 },
               ),
 
-
-
               // SingleChildScrollView(
               //   child:
               // ),
               Text(
                 'at:${DateFormat('h:mm a').format(DateFormat("yyyy-MM-dd hh:mm:ss").parse(DateTime.now().toString()))}',
-                style: TextStyle(color: Colors.blue),
-              ) ,
-
+                style: const TextStyle(color: Colors.blue),
+              ),
 
               const SizedBox(height: 30),
 
-             CustomButton(title: "Pay Now",
-             onPressed: (){},
-             )
-
-
-
+              CustomButton(
+                title: "Pay Now",
+                onPressed: () {},
+              )
             ],
           ),
-
-
-
-
-
         ],
       ),
     );
@@ -133,9 +119,6 @@ class _ParkingDetailsState extends State<ParkingDetails> {
     return _events[day] ?? [];
   }
 }
-
-
-
 
 /*
  ElevatedButton(
