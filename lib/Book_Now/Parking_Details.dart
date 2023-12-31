@@ -79,35 +79,53 @@ class _ParkingDetailsState extends State<ParkingDetails> {
               ],
             ),
           ),
-          Column(
-            children: [
-              Slider(
-                value: _currentSliderValue,
-                max: 100,
-                divisions: 5,
-                label: _currentSliderValue.round().toString(),
-                onChanged: (double value) {
-                  setState(() {
-                    _currentSliderValue = value;
-                  });
-                },
-              ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Slider(
+                  value: _currentSliderValue,
+                  max: 100,
+                  divisions: 5,
+                  label: _currentSliderValue.round().toString(),
+                  onChanged: (double value) {
+                    setState(() {
+                      _currentSliderValue = value;
+                    });
+                  },
+                ),
+                Row(
+                  children: [
+                    Text("Start Date",
+                        style: TextStyle(fontWeight: FontWeight.bold,
+                            fontSize: 20)),
+                    SizedBox(width: 200),
 
-              // SingleChildScrollView(
-              //   child:
-              // ),
-              Text(
-                'at:${DateFormat('h:mm a').format(DateFormat("yyyy-MM-dd hh:mm:ss").parse(DateTime.now().toString()))}',
-                style: const TextStyle(color: Colors.blue),
-              ),
+                    Text("End Date",
+                        style: TextStyle(fontWeight: FontWeight.bold,
+                            fontSize: 20)),
 
-              const SizedBox(height: 30),
 
-              CustomButton(
-                title: "Pay Now",
-                onPressed: () {},
-              )
-            ],
+                  ],
+                ),
+                Row(
+                  children: [
+                    Text(
+                      'at:${DateFormat('h:mm a').format(DateFormat("yyyy-MM-dd hh:mm:ss").parse(DateTime.now().toString()))}',
+                      style: const TextStyle(color: Colors.blue, fontSize: 18),
+                    ),
+                  ],
+                ),
+
+                const SizedBox(height: 30),
+
+                CustomButton(
+                  title: "Pay Now",
+                  onPressed: () {},
+                )
+              ],
+            ),
           ),
         ],
       ),
@@ -120,15 +138,3 @@ class _ParkingDetailsState extends State<ParkingDetails> {
   }
 }
 
-/*
- ElevatedButton(
-                onPressed: () {
-                  // Perform login logic here using the email and password
-                },
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.black),
-                  minimumSize: MaterialStateProperty.all(Size(370, 50)),
-                ),
-                child: Text('Pay Now'),
-              ),
- */
